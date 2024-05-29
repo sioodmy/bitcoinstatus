@@ -36,7 +36,7 @@ in {
       serviceConfig = {
         ExecStart = ''${cfg.package}/bin/bitcoinstatus'';
         Restart = "always";
-        Environment = ''DISCORD_TOKEN=${cfg.tokenFile}'';
+        Environment = ''TOKEN_PATH=${cfg.tokenFile}'';
       };
     };
   };
