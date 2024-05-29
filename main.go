@@ -20,11 +20,12 @@ func main() {
 		rng := rand.Intn(max-min+1) + min
 		interval := time.Duration(rng) * time.Second
 
+		updateStatus()
+		log.Println("Updating status at ", time.Now())
+
 		log.Println("Sleeping for ", interval)
 		time.Sleep(interval)
 
-		log.Println("Updating status at ", time.Now())
-		updateStatus()
 	}
 
 }

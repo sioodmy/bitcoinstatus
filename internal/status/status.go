@@ -6,10 +6,18 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"strings"
 )
 
 func SetStatus(custom string) {
-	discordToken := os.Getenv("DISCORD_TOKEN")
+	tokenPath := os.Getenv("TOKEN_PATH")
+	token, err := os.ReadFile(tokenPath)
+	if err != nil {
+		panic("Couldnt find user token")
+	}
+
+	tokenString := strings.TrimSpace(string(token))
+
 	status := "dnd" // or "idle", "dnd"
 
 	payload, _ := json.Marshal(map[string]interface{}{
@@ -19,7 +27,7 @@ func SetStatus(custom string) {
 		},
 	})
 	req, _ := http.NewRequest("PATCH", "https://discord.com/api/v9/users/@me/settings", bytes.NewBuffer(payload))
-	req.Header.Set("Authorization", discordToken)
+	req.Header.Set("Authorization", tokenString)
 	req.Header.Set("Content-Type", "application/json")
 
 	// Send the request

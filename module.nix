@@ -18,7 +18,7 @@ in {
       example = package;
       description = "bitcoinstatus package";
     };
-    token = mkOption {
+    tokenFile = mkOption {
       type = types.str;
       description = "Discord user token";
     };
