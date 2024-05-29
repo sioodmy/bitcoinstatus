@@ -12,7 +12,7 @@ import (
 func main() {
 
 	min := 700
-	max := 4000
+	max := 1440
 
 	log.Println("Starting")
 
